@@ -124,6 +124,7 @@ export default function TopBar({ visible, setVisible }: any) {
                       ? category?.subcategory?.map((sub: any) => {
                           return (
                             <Link
+                            key={sub.id}
                               href={category.path+sub.path}
                               className="border-b w-full pb-1 hover:bg-gray-200 pt-2 pl-2 cursor-pointer"
                             >
