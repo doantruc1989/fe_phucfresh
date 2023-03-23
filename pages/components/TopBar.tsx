@@ -177,14 +177,15 @@ export default function TopBar({ visible, setVisible }: any) {
                 className="text-xs left-0 w-full top-[80px] md:top-[42px] bg-white text-black h-auto absolute z-30 rounded-lg pb-1"
                 ref={searchref}
               >
-                {result
+                {result !== null
                   ? result.map((res: any) => {
                       return (
                         <Link
                           href={"/product/" + res.id}
                           key={res.id}
-                          onClick={() => {
-                            setResult("");
+                          onClick={(e:any) => {
+              
+                            setResult(null);
                           }}
                         >
                           <div className="flex gap-3 items-center border-b border-gray-300 w-full py-1 hover:bg-gray-100 px-3">

@@ -111,7 +111,7 @@ function Index() {
             <span className="font-medium">phucfresh.vn</span>
           </p>
           <div className="flex gap-4 mt-6">
-            <Link href={"#"}>
+            <Link href={"https://quocson2.fatcatweb.top/auth/facebook"}>
               <img
                 width="129px"
                 height="37px"
@@ -119,7 +119,7 @@ function Index() {
                 src="//bizweb.dktcdn.net/assets/admin/images/login/fb-btn.svg"
               />
             </Link>
-            <Link href={"#"}>
+            <Link href={"https://quocson2.fatcatweb.top/auth/google"}>
               <img
                 width="129px"
                 height="37px"

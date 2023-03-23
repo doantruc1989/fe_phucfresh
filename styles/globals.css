@@ -10,22 +10,22 @@
 }
 
 @media only screen and (max-width: 600px) {
- .slick-dots li {
-  width: 45px;
-  height: 50px;
-}
+  .slick-dots li {
+    width: 45px;
+    height: 50px;
+  }
 }
 
 @media only screen and (max-width: 1050px) and (min-width: 600px) {
- .slick-dots li {
-  width: 31px;
-  height: 50px;
-}
+  .slick-dots li {
+    width: 31px;
+    height: 50px;
+  }
 }
 
 @media only screen and (min-width: 1050px) {
- .slick-dots li {
-  width: 45px;
-  height: 50px;
-}
+  .slick-dots li {
+    width: 36px;
+    height: 50px;
+  }
 }
