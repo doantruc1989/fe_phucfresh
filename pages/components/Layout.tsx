@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeadSeo from "./HeadSeo";
 import Footera from "./Footer";
 import TopBar from "./TopBar";
@@ -6,23 +6,15 @@ import { Sidebar } from "primereact/sidebar";
 import Link from "next/link";
 import { HiChevronDown } from "react-icons/hi";
 import axios from "axios";
-import "primereact/resources/themes/lara-light-indigo/theme.css";     
+import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
-import "primeicons/primeicons.css"; 
+import "primeicons/primeicons.css";
+// import "~slick-carousel/slick/slick.css"; 
+// import "~slick-carousel/slick/slick-theme.css";
+import SidebarComp from "./SidebarComp";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [visible, setVisible] = useState(false);
-  const [categories, setCategories] = useState([] as any);
-
-  useEffect(() => {
-    try {
-      axios.get("https://quocson2.fatcatweb.top/product/category").then((res: any) => {
-        setCategories(res.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
 
   const prop = {
     title: "tiki trang chủ home page tìm kiếm sản phẩm sales off giá rẻ",
@@ -58,36 +50,27 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 </Link>
               </div>
             </div>
-            <div className="w-11/12 mx-auto mt-6">
-              {categories
+            <div className="w-full mx-auto">
+              <SidebarComp />
+              {/* {categories
                 ? categories.map((category: any) => {
                     return (
                       <>
-                        <Link
-                          className="flex justify-between items-center capitalize"
+                        <div
                           key={category.id}
-                          href={category.path}
+                          className="flex justify-between items-center capitalize"
                         >
-                          <p>{category.category}</p>
+                          <Link href={category.path}>
+                            <p>{category.category}</p>
+                          </Link>
                           <HiChevronDown className="text-md" />
-                        </Link>
-                        {category?.subcategory
-                          ? category?.subcategory?.map((sub: any) => {
-                              return (
-                                <Link
-                                  className="flex justify-between items-center capitalize"
-                                  key={sub.id}
-                                  href={category.path + sub.path}
-                                >
-                                  <p>{" -" + sub.name}</p>
-                                </Link>
-                              );
-                            })
-                          : null}
+                        </div>
+                        
                       </>
                     );
                   })
-                : null}
+                : null} */}
+            
             </div>
           </div>
         </Sidebar>

@@ -1,15 +1,4 @@
-import { Sidebar } from "flowbite-react";
 import React from "react";
-import Footera from "./Footer";
-import {
-  HiArrowSmRight,
-  HiChartPie,
-  HiInbox,
-  HiShoppingBag,
-  HiTable,
-  HiUser,
-  HiViewBoards,
-} from "react-icons/hi";
 import Hero from "./hero/Hero";
 import { ScrollTop } from 'primereact/scrolltop';
 import Hero2 from "./hero/Hero2";
@@ -26,6 +15,7 @@ import Hero12 from "./hero/Hero12";
 import Hero13 from "./hero/Hero13";
 import Hero14 from "./hero/Hero14";
 import Hero15 from "./hero/Hero15";
+import Hero16 from "./hero/Hero16";
 
 const Homepage = () => {
   return (
@@ -47,6 +37,7 @@ const Homepage = () => {
 <Hero12 />
 <Hero13 />
 <Hero14 />
+<Hero16 />
 <Hero15 />
     </div>
     </>

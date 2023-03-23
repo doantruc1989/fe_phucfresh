@@ -1,8 +1,10 @@
+import Link from 'next/link'
 import React from 'react'
 
 function Hero7() {
   return (
-    <div className="mt-12 flex gap-3">
+    <Link href="/vnfruit">
+    <div className="mt-12 flex flex-col md:flex-row gap-3">
       <div className="relative">
         <img src="/image/hero7_1.png" alt="hero7_1"/>
       </div>
@@ -12,6 +14,7 @@ function Hero7() {
 
       </div>
     </div>
+    </Link>
   )
 }
 
