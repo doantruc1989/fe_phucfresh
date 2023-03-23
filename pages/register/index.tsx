@@ -64,7 +64,7 @@ function Index() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3007/auth/signup", {
+      await axios.post("https://quocson2.fatcatweb.top/auth/signup", {
         email: email,
         password: pwd,
         username: name,

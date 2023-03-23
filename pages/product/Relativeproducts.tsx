@@ -12,7 +12,7 @@ function Relativeproducts() {
   useEffect(() => {
     try {
       axios
-        .get(`http://localhost:3007/product?page=1&take=20&search=allRandom`)
+        .get(`https://quocson2.fatcatweb.top/product?page=1&take=20&search=allRandom`)
         .then((res: any) => {
           setFruits(res.data);
         });

@@ -79,7 +79,7 @@ function Index() {
     const user = stored ? JSON.parse(stored) : "";
     const id = user.id;
     const config = {
-      baseURL: "http://localhost:3007/",
+      baseURL: "https://quocson2.fatcatweb.top/",
       headers: { Authorization: "Bearer " + user?.tokens?.accessToken },
     };
 
@@ -92,7 +92,7 @@ function Index() {
   useEffect(() => {
     try {
       axios
-        .get("http://localhost:3007/homepage/provinces/all")
+        .get("https://quocson2.fatcatweb.top/homepage/provinces/all")
         .then((res: any) => {
           setProvinces(res.data);
         });
@@ -109,7 +109,7 @@ function Index() {
     const stored = localStorage.getItem("user");
     const user = stored ? JSON.parse(stored) : "";
     const config = {
-      baseURL: "http://localhost:3007/",
+      baseURL: "https://quocson2.fatcatweb.top/",
       headers: { Authorization: "Bearer " + user.tokens.accessToken },
     };
 
@@ -143,7 +143,7 @@ function Index() {
   const handlePay = () => {
     try {
       axios
-        .post("http://localhost:3007/cart/order", {
+        .post("https://quocson2.fatcatweb.top/cart/order", {
           address:
             users?.address ||
             address + ", " + ward + ", " + district + ", " + city,
@@ -264,7 +264,7 @@ function Index() {
                               try {
                                 axios
                                   .get(
-                                    `http://localhost:3007/homepage/provinces/${e.target.value}`
+                                    `https://quocson2.fatcatweb.top/homepage/provinces/${e.target.value}`
                                   )
                                   .then((res: any) => {
                                     setProDictricts(res.data[0]);
@@ -303,7 +303,7 @@ function Index() {
                               try {
                                 axios
                                   .get(
-                                    `http://localhost:3007/homepage/provinces/city/${e.target.value}`
+                                    `https://quocson2.fatcatweb.top/homepage/provinces/city/${e.target.value}`
                                   )
                                   .then((res: any) => {
                                     setProWards(
@@ -487,7 +487,7 @@ function Index() {
                           try {
                             axios
                               .get(
-                                `http://localhost:3007/homepage/provinces/${e.target.value}`
+                                `https://quocson2.fatcatweb.top/homepage/provinces/${e.target.value}`
                               )
                               .then((res: any) => {
                                 setProDictricts(res.data[0]);
@@ -526,7 +526,7 @@ function Index() {
                           try {
                             axios
                               .get(
-                                `http://localhost:3007/homepage/provinces/city/${e.target.value}`
+                                `https://quocson2.fatcatweb.top/homepage/provinces/city/${e.target.value}`
                               )
                               .then((res: any) => {
                                 setProWards(

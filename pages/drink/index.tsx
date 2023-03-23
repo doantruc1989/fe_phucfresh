@@ -147,7 +147,7 @@ function Index() {
     try {
       axios
         .get(
-          `http://localhost:3007/product?page=${page}&take=20&filter=6&sortField=${sortField2?.sortField}&fromPrice=${sortField2?.fromPrice}&toPrice=${sortField2?.toPrice}&search=${sortField2?.search}`
+          `https://quocson2.fatcatweb.top/product?page=${page}&take=20&filter=6&sortField=${sortField2?.sortField}&fromPrice=${sortField2?.fromPrice}&toPrice=${sortField2?.toPrice}&search=${sortField2?.search}`
         )
         .then((res: any) => {
           setVnFruits(res.data);

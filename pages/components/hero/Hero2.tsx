@@ -22,7 +22,7 @@ function Hero2() {
     try {
       axios
         .get(
-          `http://localhost:3007/product?page=${page}&take=20&sortField=${sortField2?.sortField}&search=${sortField2?.search}`
+          `https://quocson2.fatcatweb.top/product?page=${page}&take=20&sortField=${sortField2?.sortField}&search=${sortField2?.search}`
         )
         .then((res: any) => {
           setFruits(res.data);

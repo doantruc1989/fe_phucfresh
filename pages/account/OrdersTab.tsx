@@ -14,7 +14,7 @@ function OrdersTab({ orders, paid, setPaid }: any) {
     const user = stored ? JSON.parse(stored) : "";
     const id = user.id;
     const config = {
-      baseURL: "http://localhost:3007",
+      baseURL: "https://quocson2.fatcatweb.top",
       headers: { Authorization: "Bearer " + user.tokens.accessToken },
     };
 

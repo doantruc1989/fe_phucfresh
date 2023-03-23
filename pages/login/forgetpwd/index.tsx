@@ -18,7 +18,7 @@ function Index() {
     e.preventDefault();
     try {
       await axios
-        .post("http://localhost:3007/users/forgot-password", {
+        .post("https://quocson2.fatcatweb.top/users/forgot-password", {
           email,
         })
         .then((res: any) => {

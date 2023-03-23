@@ -15,7 +15,7 @@ function LoginModal({ isLogin, setIsLogin }: any) {
     e.preventDefault();
     try {
       await axios
-        .post("http://localhost:3007/auth/signin", {
+        .post("https://quocson2.fatcatweb.top/auth/signin", {
           email,
           password: pwd,
         })

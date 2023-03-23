@@ -60,7 +60,7 @@ function Index() {
     const user = stored ? JSON.parse(stored) : "";
     const id = user.id;
     const config = {
-      baseURL: "http://localhost:3007/",
+      baseURL: "https://quocson2.fatcatweb.top/",
       headers: { Authorization: "Bearer " + user?.tokens?.accessToken },
     };
 
@@ -76,7 +76,7 @@ function Index() {
     const user = stored ? JSON.parse(stored) : "";
     const id = user.id;
     const config = {
-      baseURL: "http://localhost:3007/",
+      baseURL: "https://quocson2.fatcatweb.top/",
       headers: { Authorization: "Bearer " + user?.tokens?.accessToken },
     };
 
@@ -90,7 +90,7 @@ function Index() {
     const stored = localStorage.getItem("user");
     const user = stored ? JSON.parse(stored) : "";
     const config = {
-      baseURL: "http://localhost:3007/",
+      baseURL: "https://quocson2.fatcatweb.top/",
       headers: { Authorization: "Bearer " + user?.tokens?.accessToken },
     };
 
@@ -119,7 +119,7 @@ function Index() {
     const stored = localStorage.getItem("user");
     const user = stored ? JSON.parse(stored) : "";
     const config = {
-      baseURL: "http://localhost:3007/",
+      baseURL: "https://quocson2.fatcatweb.top/",
       headers: { Authorization: "Bearer " + user?.tokens?.accessToken },
     };
 
@@ -149,7 +149,7 @@ function Index() {
     const stored = localStorage.getItem("user");
     const user = stored ? JSON.parse(stored) : "";
     const config = {
-      baseURL: "http://localhost:3007/",
+      baseURL: "https://quocson2.fatcatweb.top/",
       headers: { Authorization: "Bearer " + user?.tokens?.accessToken },
     };
 

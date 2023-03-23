@@ -44,7 +44,7 @@ const settings = {
 
   useEffect(() => {
     try {
-      axios.get(`http://localhost:3007/product/${fruitId}`).then((res: any) => {
+      axios.get(`https://quocson2.fatcatweb.top/product/${fruitId}`).then((res: any) => {
         setFruit(res.data[0]);
         // setImg1(res.data[0]?.productimage?.image1)
         // setImg2(res.data[0]?.productimage?.image2)
@@ -59,7 +59,7 @@ const settings = {
 
   useEffect(() => {
     try {
-      axios.get("http://localhost:3007/blog").then((res: any) => {
+      axios.get("https://quocson2.fatcatweb.top/blog").then((res: any) => {
         setBlogs(res.data);
       });
     } catch (error) {

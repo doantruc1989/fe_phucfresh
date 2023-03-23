@@ -34,7 +34,7 @@ export default function TopBar({ visible, setVisible }: any) {
 
   useEffect(() => {
     try {
-      axios.get("http://localhost:3007/product/category").then((res: any) => {
+      axios.get("https://quocson2.fatcatweb.top/product/category").then((res: any) => {
         setCategories(res.data);
       });
     } catch (error) {
@@ -60,7 +60,7 @@ export default function TopBar({ visible, setVisible }: any) {
       try {
         await axios
           .get(
-            `http://localhost:3007/product?page=${page}&take=10&sortField=${e.target.value}&search=searchall`
+            `https://quocson2.fatcatweb.top/product?page=${page}&take=10&sortField=${e.target.value}&search=searchall`
           )
           .then((res) => {
             setResult(res.data);

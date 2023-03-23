@@ -16,7 +16,7 @@ const [blogs, setBlogs] = useState([] as any)
     try {
       axios
         .get(
-          `http://localhost:3007/blog`
+          `https://quocson2.fatcatweb.top/blog`
         )
         .then((res: any) => {
             setBlogs(res.data);

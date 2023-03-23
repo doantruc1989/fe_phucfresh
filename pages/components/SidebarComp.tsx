@@ -7,7 +7,7 @@ function SidebarComp() {
 
   useEffect(() => {
     try {
-      axios.get("http://localhost:3007/product/category").then((res: any) => {
+      axios.get("https://quocson2.fatcatweb.top/product/category").then((res: any) => {
         setCategories(res.data);
       });
     } catch (error) {

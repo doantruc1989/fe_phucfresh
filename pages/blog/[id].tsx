@@ -16,7 +16,7 @@ function Index() {
 
   useEffect(() => {
     try {
-      axios.get(`http://localhost:3007/blog/${blogId}`).then((res: any) => {
+      axios.get(`https://quocson2.fatcatweb.top/blog/${blogId}`).then((res: any) => {
         setBlog(res.data);
       });
     } catch (error) {
