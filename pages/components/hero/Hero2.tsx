@@ -32,7 +32,6 @@ function Hero2() {
     }
   }, []);
 
-
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 968 },
@@ -93,7 +92,7 @@ function Hero2() {
                   <div className="relative flex items-center justify-center">
                     <img
                       src={product?.image}
-                      className="rounded-t-lg cursor-pointer w-full h-60"
+                      className="rounded-t-lg cursor-pointer w-full h-60 object-cover"
                       alt="..."
                     />
                   </div>

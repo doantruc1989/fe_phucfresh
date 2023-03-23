@@ -365,7 +365,7 @@ function Index() {
                       <Link href={"/product/" + fruit.id}>
                         <img
                           src={fruit.image}
-                          className="rounded-t-md cursor-pointer w-full h-60"
+                          className="rounded-t-md cursor-pointer w-full h-60 object-cover"
                           alt="..."
                         />
                         <div className="cursor-pointer text-center text-xs">

@@ -9,7 +9,7 @@ import Layout from "../components/Layout";
 import Relativeproducts from "./Relativeproducts";
 import Slider from "react-slick";
 import parse from "html-react-parser";
-import { ScrollTop } from 'primereact/scrolltop';
+import { ScrollTop } from "primereact/scrolltop";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,38 +19,38 @@ function Index() {
   const fruitId = router.query.id;
   const [blogs, setBlogs] = useState([] as any);
   const { addItem } = useCart();
-// const [img1, setImg1] =useState('')
-// const [img2, setImg2] =useState('')
-// const [img3, setImg3] =useState('')
-// const [img4, setImg4] =useState('')
-// const [img5, setImg5] =useState('')
+  const pagination = [
+    fruit?.image,
+    fruit?.productimage?.image1,
+    fruit?.productimage?.image2,
+    fruit?.productimage?.image3,
+    fruit?.productimage?.image4,
+    fruit?.productimage?.image5,
+  ];
 
-const settings = {
-    // customPaging: function (i: number) {
-    //   return (
-    //     <a>
-    //       {parse(`${pagination[i]}`)}
-    //     </a>
-    //   );
-    // },
+  const settings = {
+    customPaging: function (i: number) {
+      return (
+        <a>
+          <img className="mt-12 h-16 w-full object-cover rounded-md" src={pagination[i]} />
+        </a>
+      );
+    },
     dots: true,
-    dotsClass: "slick-dots slick-thumb",
+    dotsClass: "slick-dots slick-thum w-full",
     infinite: true,
+    autoplay: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
+
   };
 
   useEffect(() => {
     try {
       axios.get(`https://quocson2.fatcatweb.top/product/${fruitId}`).then((res: any) => {
         setFruit(res.data[0]);
-        // setImg1(res.data[0]?.productimage?.image1)
-        // setImg2(res.data[0]?.productimage?.image2)
-        // setImg3(res.data[0]?.productimage?.image3)
-        // setImg4(res.data[0]?.productimage?.image4)
-        // setImg5(res.data[0]?.productimage?.image5)
       });
     } catch (error) {
       console.log(error);
@@ -72,7 +72,7 @@ const settings = {
       <Breadcrumb className="w-full lg:w-11/12 mx-auto pt-5 border-b border-gray-100 pb-4">
         <Breadcrumb.Item href="/" icon={HiHome}>
           Trang chủ
-          <ToastContainer/>
+          <ToastContainer />
         </Breadcrumb.Item>
         <Breadcrumb.Item
           href={fruit?.category?.path}
@@ -86,30 +86,29 @@ const settings = {
           <ScrollTop />
         </Breadcrumb.Item>
       </Breadcrumb>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8 my-6 w-full md:w-11/12 lg:w-9/12 mx-auto gap-6">
-        
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8 mt-6 mb-14 w-full md:w-11/12 lg:w-9/12 mx-auto gap-6">
         <div className="md:col-start-1 md:col-end-2 lg:col-end-4 mb-6">
-          <Slider {...settings} className="w-11/12 mx-auto h-fit">
-            <img src={fruit?.image} />
+          <Slider {...settings} className="w-full mx-auto h-fit">
+            <img className="h-[380px] object-cover rounded-lg" src={fruit?.image} />
             {fruit?.productimage?.image1 ? (
-              <img src={fruit?.productimage?.image1} />
+              <img className="h-[380px] object-cover rounded-lg" src={fruit?.productimage?.image1} />
             ) : null}
             {fruit?.productimage?.image2 ? (
-              <img src={fruit?.productimage?.image2} />
+              <img className="h-[380px] object-cover rounded-lg" src={fruit?.productimage?.image2} />
             ) : null}
             {fruit?.productimage?.image3 ? (
-              <img src={fruit?.productimage?.image3} />
+              <img className="h-[380px] object-cover rounded-lg" src={fruit?.productimage?.image3} />
             ) : null}
             {fruit?.productimage?.image4 ? (
-              <img src={fruit?.productimage?.image4} />
+              <img className="h-[380px] object-cover rounded-lg" src={fruit?.productimage?.image4} />
             ) : null}
             {fruit?.productimage?.image5 ? (
-              <img src={fruit?.productimage?.image5} />
+              <img className="h-[380px] object-cover rounded-lg" src={fruit?.productimage?.image5} />
             ) : null}
           </Slider>
         </div>
 
-        <div className="md:col-start-2 md:col-end-3 lg:col-start-4 lg:col-end-7">
+        <div className="mt-14 md:mt-0 md:col-start-2 md:col-end-3 lg:col-start-4 lg:col-end-7">
           <h1 className="text-xl uppercase font-medium">
             {fruit?.productName}
           </h1>
@@ -151,16 +150,16 @@ const settings = {
             </p>
           </div>
 
-          <Button 
-          className="my-4 mx-auto bg-[#236815] hover:bg-red-400"
-          onClick={() => {
-            addItem(fruit);
-            toast("Đã thêm vào giỏ hàng", {
-              position: toast.POSITION.BOTTOM_RIGHT,
-              type: toast.TYPE.SUCCESS,
-              className: "toast-message",
-            });
-          }}
+          <Button
+            className="my-4 mx-auto bg-[#236815] hover:bg-red-400"
+            onClick={() => {
+              addItem(fruit);
+              toast("Đã thêm vào giỏ hàng", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                type: toast.TYPE.SUCCESS,
+                className: "toast-message",
+              });
+            }}
           >
             <div className="flex flex-col items-center gap-1">
               <p className="text-sm font-medium uppercase">

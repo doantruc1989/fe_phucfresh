@@ -73,7 +73,7 @@ function HeroProps({ props }: any) {
 
               <img
                 src={product?.image}
-                className="rounded-t-lg cursor-pointer w-full h-60"
+                className="rounded-t-lg cursor-pointer w-full h-60 object-cover"
                 alt="..."
               />
 

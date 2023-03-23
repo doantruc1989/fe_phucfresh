@@ -779,7 +779,7 @@ function Index() {
                     <div className="relative">
                       <Link href={"/product/" + item.id}>
                         <img
-                          className="h-10 w-12 rounded-md"
+                          className="h-10 w-12 rounded-md object-cover"
                           src={item.image}
                           alt=""
                         />

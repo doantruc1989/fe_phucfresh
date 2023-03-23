@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import { HiChevronLeft, HiChevronRight, HiHome } from "react-icons/hi";
 import { useRouter } from "next/router";
 import { Dialog, Transition } from "@headlessui/react";
+import Link from "next/link";
 
 function Index() {
   const { totalUniqueItems, items, updateItemQuantity, cartTotal } =
@@ -53,11 +54,13 @@ function Index() {
                       >
                         <Table.Cell className="py-0 pl-0">
                           <div className="pl-4 flex justify-start items-center mx-auto">
+                            <Link href={"/product/" + item.id}>
                             <img
                               src={item.image}
-                              className="w-14 h-14"
+                              className="w-14 h-14 object-cover"
                               alt=".."
                             />
+                            </Link>
                           </div>
                         </Table.Cell>
                         <Table.Cell className="hidden lg:flex lg:flex-col lg:items-start">

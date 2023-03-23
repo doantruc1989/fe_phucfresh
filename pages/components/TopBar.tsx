@@ -105,7 +105,7 @@ export default function TopBar({ visible, setVisible }: any) {
             <Link href={"/account"}>
               <div className="flex gap-2 items-center border-r border-white pr-2">
                 <img 
-                className="h-5 w-5 rounded-full"
+                className="h-5 w-5 rounded-full object-cover"
                 src={user.image} alt="avatar" />
                 <p className="text-xs uppercase">
                   {"xin chào, " + user.username}
