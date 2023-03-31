@@ -73,12 +73,14 @@ const Hero16 = () => {
                   <div className="flex items-center gap-1 px-1 font-medium text-white absolute border rounded-tl-md rounded-br-md border-gray-400 bg-blue-500 text-sm md:text-[10px] uppercase">
                     <p>New</p>
                   </div>
+<div className='overflow-hidden'>
 
                   <img
                     src={blog?.image}
-                    className="rounded-t-lg cursor-pointer w-full h-60 object-cover"
+                    className="rounded-t-lg cursor-pointer w-full h-60 object-cover hover:scale-110 transition-all duration-500"
                     alt="..."
                   />
+</div>
 
                   <div className="cursor-pointer text-center text-xs mb-3">
                     <p className="font-medium text-base text-pink-500 dark:text-white mx-1 mt-2 text-ellipsis">

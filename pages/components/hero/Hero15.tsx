@@ -45,22 +45,22 @@ function Hero15() {
           dotListClass="custom-dot-list-style"
         >
           <img
-            className="w-fit mx-auto"
+            className="w-fit mx-auto hover:scale-110 transition-all duration-500 cursor-pointer"
             src="/image/dtkh1.png"
             alt="dsa"
           />
           <img
-            className="w-fit mx-auto"
+            className="w-fit mx-auto hover:scale-110 transition-all duration-500 cursor-pointer"
             src="/image/dtkh2.png"
             alt="dsa"
           />
           <img
-            className="w-fit mx-auto"
+            className="w-fit mx-auto hover:scale-110 transition-all duration-500 cursor-pointer"
             src="/image/dtkh3.png"
             alt="dsa"
           />
           <img
-            className="w-fit mx-auto"
+            className="w-fit mx-auto hover:scale-110 transition-all duration-500 cursor-pointer"
             src="/image/dtkh4.png"
             alt="dsa"
           />

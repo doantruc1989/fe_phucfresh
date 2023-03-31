@@ -8,7 +8,6 @@ import Carousel from "react-multi-carousel";
 function HeroProps({ props }: any) {
   const [fruits, setFruits] = useState([] as any);
 
-
   useEffect(() => {
     try {
       axios
@@ -70,12 +69,13 @@ function HeroProps({ props }: any) {
                 <HiStar className="font-medium text-sm" />
                 <p>{product?.brand}</p>
               </div>
-
-              <img
-                src={product?.image}
-                className="rounded-t-lg cursor-pointer w-full h-60 object-cover"
-                alt="..."
-              />
+              <div className="overflow-hidden">
+                <img
+                  src={product?.image}
+                  className="rounded-t-lg cursor-pointer w-full h-60 object-cover hover:scale-110 transition-all duration-500"
+                  alt="..."
+                />
+              </div>
 
               <div className="cursor-pointer text-center text-xs">
                 <p className="font-medium text-gray-900 dark:text-white mx-1 mt-2 text-ellipsis h-8">

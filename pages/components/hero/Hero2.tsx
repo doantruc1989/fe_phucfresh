@@ -89,10 +89,10 @@ function Hero2() {
                     <p>{product?.brand}</p>
                   </div>
 
-                  <div className="relative flex items-center justify-center">
+                  <div className="relative flex items-center justify-center overflow-hidden">
                     <img
                       src={product?.image}
-                      className="rounded-t-lg cursor-pointer w-full h-60 object-cover"
+                      className="rounded-t-lg cursor-pointer w-full h-60 object-cover hover:scale-110 transition-all duration-500"
                       alt="..."
                     />
                   </div>

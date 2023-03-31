@@ -367,14 +367,17 @@ function Index() {
                   return (
                     <div
                       key={fruit.id}
-                      className="rounded-md border border-gray-200 shadow-sm hover:shadow-xl bg-white"
+                      className="rounded-md border hover:shadow-xl border-gray-200 shadow-sm bg-white"
                     >
                       <Link href={"/product/" + fruit.slug}>
+                        <div className="overflow-hidden">
+
                         <img
                           src={fruit.image}
-                          className="rounded-t-md cursor-pointer w-full h-60 object-cover"
+                          className="rounded-t-md cursor-pointer w-full h-60 object-cover hover:scale-110 transition-all duration-500"
                           alt="..."
                         />
+                        </div>
                         <div className="cursor-pointer text-center text-xs">
                           <p className="font-medium text-gray-900 dark:text-white mx-1 mt-2 text-ellipsis h-8">
                             {fruit.productName.substring(0, 37) + "..."}
