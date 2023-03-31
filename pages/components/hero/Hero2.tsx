@@ -25,7 +25,7 @@ function Hero2() {
           `https://quocson2.fatcatweb.top/product?page=${page}&take=20&sortField=${sortField2?.sortField}&search=${sortField2?.search}`
         )
         .then((res: any) => {
-          setFruits(res.data);
+          setFruits(res.data[0]);
         });
     } catch (error) {
       console.log(error);
@@ -83,7 +83,7 @@ function Hero2() {
                 key={product?.id}
                 className="rounded-lg mx-1 border border-gray-200 shadow-sm hover:shadow-lg bg-white mb-1.5"
               >
-                <Link href={"/product/" + product.id}>
+                <Link href={"/product/" + product.slug}>
                   <div className="flex items-center gap-1 px-1 font-medium text-white absolute border rounded-tl-md rounded-br-md border-gray-400 bg-blue-500 text-sm md:text-[10px] uppercase">
                     <HiStar className="font-medium text-sm" />
                     <p>{product?.brand}</p>

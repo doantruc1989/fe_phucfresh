@@ -13,10 +13,10 @@ function HeroProps({ props }: any) {
     try {
       axios
         .get(
-          `https://quocson2.fatcatweb.top/product?page=1&take=20&filter=${props.filter}&sortField=${props?.sortField}&search=${props?.search}`
+          `https://quocson2.fatcatweb.top/product?page=1&take=20&filter=${props.filter}&condition2=${props?.condition2}&search=${props?.search}`
         )
         .then((res: any) => {
-          setFruits(res.data);
+          setFruits(res.data[0]);
         });
     } catch (error) {
       console.log(error);
@@ -65,7 +65,7 @@ function HeroProps({ props }: any) {
             key={product?.id}
             className="rounded-lg mx-1 border border-gray-200 shadow-sm hover:shadow-lg bg-white mb-1.5"
           >
-            <Link href={"/product/" + product.id}>
+            <Link href={"/product/" + product.slug}>
               <div className="flex items-center gap-1 px-1 font-medium text-white absolute border rounded-tl-md rounded-br-md border-gray-400 bg-blue-500 text-sm md:text-[10px] uppercase">
                 <HiStar className="font-medium text-sm" />
                 <p>{product?.brand}</p>

@@ -19,6 +19,7 @@ function Index() {
   const fruitId = router.query.id;
   const [blogs, setBlogs] = useState([] as any);
   const { addItem } = useCart();
+
   const pagination = [
     fruit?.image,
     fruit?.productimage?.image1,

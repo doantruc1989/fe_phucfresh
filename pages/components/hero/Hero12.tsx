@@ -5,17 +5,17 @@ import HeroProps from "../HeroProps";
 
 function Hero12() {
   const hanquoc = {
-    sortField: "Hàn Quốc",
+    condition2: "Hàn Quốc",
     search: "bybrand",
     filter: "6",
   };
   const binhan = {
-    sortField: "Bình An Farm",
+    condition2: "Bình An Farm",
     search: "bybrand",
     filter: "6",
   };
   const dongtrung = {
-    sortField: "Hector",
+    condition2: "Hector",
     search: "bybrand",
     filter: "6",
   };

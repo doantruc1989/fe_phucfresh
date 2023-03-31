@@ -6,17 +6,17 @@ import HeroProps from "../HeroProps";
 
 function Hero4() {
   const hopqua = {
-    sortField: "Gói quà",
+    condition2: "Gói quà",
     search: "bybrand",
     filter: "3",
   };
   const gioqua = {
-    sortField: "Giỏ quà",
+    condition2: "Giỏ quà",
     search: "bybrand",
     filter: "3",
   };
   const qua8thang3 = {
-    sortField: "quà",
+    condition2: "",
     search: "bybrand",
     filter: "3",
   };

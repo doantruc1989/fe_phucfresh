@@ -1,4 +1,4 @@
-import { Breadcrumb, Rating } from "flowbite-react";
+import { Breadcrumb, Pagination, Rating } from "flowbite-react";
 import React, { ReactElement, useEffect, useState } from "react";
 import { CartProvider } from "react-use-cart";
 import Layout from "../components/Layout";
@@ -7,212 +7,30 @@ import axios from "axios";
 import Link from "next/link";
 
 function Index() {
-  const all = {
-    sortField: "",
-    search: "",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const price1 = {
-    sortField: "1",
-    search: "byprice",
-    fromPrice: "0",
-    toPrice: "100000",
-  };
-  const price2 = {
-    sortField: "1",
-    search: "byprice",
-    fromPrice: "100000",
-    toPrice: "200000",
-  };
-  const price3 = {
-    sortField: "1",
-    search: "byprice",
-    fromPrice: "200000",
-    toPrice: "300000",
-  };
-  const price4 = {
-    sortField: "1",
-    search: "byprice",
-    fromPrice: "300000",
-    toPrice: "500000",
-  };
-  const price5 = {
-    sortField: "1",
-    search: "byprice",
-    fromPrice: "500000",
-    toPrice: "1000000",
-  };
-  const price6 = {
-    sortField: "1",
-    search: "byprice",
-    fromPrice: "1000000",
-    toPrice: "10000000",
-  };
-  const brandName1 = {
-    sortField: "Hàn Quốc",
-    search: "bybrand",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const brandName2 = {
-    sortField: "Mỹ",
-    search: "bybrand",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const brandName3 = {
-    sortField: "Nam Phi",
-    search: "bybrand",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const brandName4 = {
-    sortField: "New Zealand",
-    search: "bybrand",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const brandName5 = {
-    sortField: "Pháp",
-    search: "bybrand",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const brandName6 = {
-    sortField: "Thái Lan",
-    search: "bybrand",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const brandName7 = {
-    sortField: "Úc",
-    search: "bybrand",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const brandName8 = {
-    sortField: "Đài Loan",
-    search: "bybrand",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const sortAz = {
-    sortField: "productName",
-    search: "ASC",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const sortZa = {
-    sortField: "productName",
-    search: "DESC",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const newProduct = {
-    sortField: "createdAt",
-    search: "DESC",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const sortPriceAz = {
-    sortField: "price",
-    search: "ASC",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const sortPriceZa = {
-    sortField: "price",
-    search: "DESC",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const cam = {
-    sortField: "cam",
-    search: "byname",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const cherry = {
-    sortField: "cherry",
-    search: "byname",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const dau = {
-    sortField: "dâu",
-    search: "byname",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const dualuoi = {
-    sortField: "dưa",
-    search: "byname",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const le = {
-    sortField: "lê",
-    search: "byname",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const nho = {
-    sortField: "nho",
-    search: "byname",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const quyt = {
-    sortField: "quýt",
-    search: "byname",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const tao = {
-    sortField: "táo",
-    search: "byname",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const thanhtra = {
-    sortField: "thanh trà",
-    search: "byname",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const tac = {
-    sortField: "tắc",
-    search: "byname",
-    fromPrice: "",
-    toPrice: "",
-  };
-  const vietquat = {
-    sortField: "việt quất",
-    search: "byname",
-    fromPrice: "",
-    toPrice: "",
-  };
-
   const [vnFruits, setVnFruits] = useState([] as any);
   const [page, setPage] = useState(1);
-  const [sortField2, setSortField2] = useState(all);
-
-  console.log(vnFruits);
+  const [totalItems, setTotalItems] = useState(1);
+  const [search, setSearch] = useState("");
+  const [condition, setCondition] = useState("");
+  const [condition2, setCondition2] = useState("");
+  const [sortField, setSortField] = useState("");
+  const [fromPrice, setFromPrice] = useState("");
+  const [toPrice, setToPrice] = useState("");
 
   useEffect(() => {
     try {
       axios
         .get(
-          `https://quocson2.fatcatweb.top/product?page=${page}&take=20&filter=2&sortField=${sortField2?.sortField}&fromPrice=${sortField2?.fromPrice}&toPrice=${sortField2?.toPrice}&search=${sortField2?.search}`
+          `https://quocson2.fatcatweb.top/product?page=${page}&take=20&filter=2&condition2=${condition2}&condition=${condition}&sortField=${sortField}&fromPrice=${fromPrice}&toPrice=${toPrice}&search=${search}`
         )
         .then((res: any) => {
-          setVnFruits(res.data);
+          setVnFruits(res.data[0]);
+          setTotalItems(res.data[1]);
         });
     } catch (error) {
       console.log(error);
     }
-  }, [page, sortField2]);
+  }, [page, condition, condition2, sortField, fromPrice, toPrice, search]);
 
   return (
     <div>
@@ -220,13 +38,7 @@ function Index() {
         <Breadcrumb.Item href="/" icon={HiHome}>
           Trang chủ
         </Breadcrumb.Item>
-        <Breadcrumb.Item
-        //   href={"/" + productDetail[0]?.categoryID.path}
-        //   icon={HiOutlineShoppingBag}
-        //   className="capitalize"
-        >
-          Trái cây nhập khẩu
-        </Breadcrumb.Item>
+        <Breadcrumb.Item>Trái cây nhập khẩu</Breadcrumb.Item>
       </Breadcrumb>
       <div className="md:grid md:grid-cols-4 md:gap-6 w-full md:w-11/12 lg:w-9/12 mx-auto mb-6">
         <div className="col-start-1 col-end-2 hidden md:block">
@@ -238,110 +50,220 @@ function Index() {
               <p className="font-medium text-sm">Loại</p>
               <div className="mt-3">
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    sortField === "cam"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(cam);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byname");
+                    setSortField("cam");
                   }}
                 >
                   Cam
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    sortField === "cherry"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(cherry);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byname");
+                    setSortField("cherry");
                   }}
                 >
                   Cherry
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    sortField === "dâu"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(dau);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byname");
+                    setSortField("dâu");
                   }}
                 >
                   Dâu
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    sortField === "dưa"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(dualuoi);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byname");
+                    setSortField("dưa");
                   }}
                 >
                   Dưa lưới
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    sortField === "lê"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(le);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byname");
+                    setSortField("lê");
                   }}
                 >
                   Lê
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    sortField === "nho"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(nho);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byname");
+                    setSortField("nho");
                   }}
                 >
                   Nho
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    sortField === "quýt"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(quyt);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byname");
+                    setSortField("quýt");
                   }}
                 >
                   Quýt
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    sortField === "táo"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(tao);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byname");
+                    setSortField("táo");
                   }}
                 >
                   Táo
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    sortField === "thanh trà"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(thanhtra);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byname");
+                    setSortField("thanh trà");
                   }}
                 >
                   Thanh trà
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    sortField === "tắc"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(tac);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byname");
+                    setSortField("tắc");
                   }}
                 >
                   Tắc
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    sortField === "việt quất"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(vietquat);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byname");
+                    setSortField("việt quất");
                   }}
                 >
                   Việt quất
@@ -351,79 +273,159 @@ function Index() {
               <p className="font-medium text-sm mt-3">Thương hiệu</p>
               <div className="mt-3">
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    condition2 === "Hàn Quốc"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(brandName1);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("Hàn Quốc");
+                    setSearch("bybrand");
+                    setSortField("");
                   }}
                 >
                   Hàn Quốc
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    condition2 === "Mỹ"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(brandName2);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("Mỹ");
+                    setSearch("bybrand");
+                    setSortField("");
                   }}
                 >
                   Mỹ
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    condition2 === "Nam Phi"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(brandName3);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("Nam Phi");
+                    setSearch("bybrand");
+                    setSortField("");
                   }}
                 >
                   Nam Phi
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    condition2 === "Úc"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(brandName7);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("Úc");
+                    setSearch("bybrand");
+                    setSortField("");
                   }}
                 >
                   Úc
                 </button>
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    condition2 === "New Zealand"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(brandName4);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("New Zealand");
+                    setSearch("bybrand");
+                    setSortField("");
                   }}
                 >
                   New Zealand
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    condition2 === "Pháp"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(brandName5);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("Pháp");
+                    setSearch("bybrand");
+                    setSortField("");
                   }}
                 >
                   Pháp
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    condition2 === "Thái Lan"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(brandName6);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("Thái Lan");
+                    setSearch("bybrand");
+                    setSortField("");
                   }}
                 >
                   Thái Lan
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    condition2 === "Đài Loan"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(brandName8);
+                    setPage(1);
+                    setFromPrice("");
+                    setToPrice("");
+                    setCondition("");
+                    setCondition2("Đài Loan");
+                    setSearch("bybrand");
+                    setSortField("");
                   }}
                 >
                   Đài Loan
@@ -433,57 +435,117 @@ function Index() {
               <p className="font-medium text-sm mt-3">Giá sản phẩm</p>
               <div className="mt-3">
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    toPrice === "100000"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(price1);
+                    setPage(1);
+                    setFromPrice("0");
+                    setToPrice("100000");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byprice");
+                    setSortField("");
                   }}
                 >
                   Giá dưới 100.000đ
                 </button>
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    toPrice === "200000"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(price2);
+                    setPage(1);
+                    setFromPrice("100000");
+                    setToPrice("200000");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byprice");
+                    setSortField("");
                   }}
                 >
                   100.000đ - 200.000đ
                 </button>
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    toPrice === "300000"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(price3);
+                    setPage(1);
+                    setFromPrice("200000");
+                    setToPrice("300000");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byprice");
+                    setSortField("");
                   }}
                 >
                   200.000đ - 300.000đ
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    toPrice === "500000"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(price4);
+                    setPage(1);
+                    setFromPrice("300000");
+                    setToPrice("500000");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byprice");
+                    setSortField("");
                   }}
                 >
                   300.000đ - 500.000đ
                 </button>
 
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    toPrice === "1000000"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(price5);
+                    setPage(1);
+                    setFromPrice("500000");
+                    setToPrice("1000000");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byprice");
+                    setSortField("");
                   }}
                 >
                   500.000đ - 1.000.000đ
                 </button>
                 <button
-                  className="ml-1 mb-2 px-2 rounded-xl border border-gray-200 hover:bg-green-600 hover:text-white bg-white w-fit"
+                  className={`${
+                    fromPrice === "1000000"
+                      ? "bg-green-600 text-white"
+                      : "border-gray-200"
+                  } ml-1 mb-2 px-2 rounded-xl border hover:bg-green-600 hover:text-white bg-white w-fit`}
                   onClick={(e: any) => {
                     e.preventDefault();
-                    setSortField2(price6);
+                    setPage(1);
+                    setFromPrice("1000000");
+                    setToPrice("10000000");
+                    setCondition("");
+                    setCondition2("");
+                    setSearch("byprice");
+                    setSortField("");
                   }}
                 >
                   Giá trên 1.000.000đ
@@ -537,7 +599,9 @@ function Index() {
                 name="default-radio"
                 className="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-600 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 onClick={(e: any) => {
-                  setSortField2(sortAz);
+                  setPage(1);
+                  setCondition("productName");
+                  setSearch("ASC");
                 }}
               />
               <label
@@ -555,7 +619,9 @@ function Index() {
                 name="default-radio"
                 className="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-600 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 onClick={(e: any) => {
-                  setSortField2(sortZa);
+                  setPage(1);
+                  setCondition("productName");
+                  setSearch("DESC");
                 }}
               />
               <label
@@ -573,7 +639,9 @@ function Index() {
                 name="default-radio"
                 className="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-600 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 onClick={(e: any) => {
-                  setSortField2(newProduct);
+                  setPage(1);
+                  setCondition("createdAt");
+                  setSearch("DESC");
                 }}
               />
               <label
@@ -591,7 +659,9 @@ function Index() {
                 name="default-radio"
                 className="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-600 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 onClick={(e: any) => {
-                  setSortField2(sortPriceAz);
+                  setPage(1);
+                  setCondition("price");
+                  setSearch("ASC");
                 }}
               />
               <label
@@ -609,7 +679,9 @@ function Index() {
                 name="default-radio"
                 className="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-600 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 onClick={(e: any) => {
-                  setSortField2(sortPriceZa);
+                  setPage(1);
+                  setCondition("price");
+                  setSearch("DESC");
                 }}
               />
               <label
@@ -629,7 +701,7 @@ function Index() {
                       key={fruit.id}
                       className="rounded-md border border-gray-200 shadow-sm hover:shadow-xl bg-white"
                     >
-                      <Link href={"/product/" + fruit.id}>
+                      <Link href={"/product/" + fruit.slug}>
                         <img
                           src={fruit.image}
                           className="rounded-t-md cursor-pointer w-full h-60 object-cover"
@@ -667,6 +739,18 @@ function Index() {
                 })
               : null}
           </div>
+          {totalItems >= 20 ? (
+            <div className="flex items-center justify-center text-center mt-6">
+              <Pagination
+                currentPage={page}
+                totalPages={Math.ceil(totalItems / 20)}
+                layout="pagination"
+                onPageChange={(e: any) => {
+                  setPage(e);
+                }}
+              />
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

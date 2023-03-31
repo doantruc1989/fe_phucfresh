@@ -5,14 +5,14 @@ import HeroProps from "../HeroProps";
 
 function Hero14() {
   const banh = {
-    sortField: "Bánh",
+    condition2: "Bánh",
     search: "bybrand",
     filter: "4",
   };
   const ngucoc = {
-    sortField: "Ngũ cốc",
+    condition2: "Ngũ cốc",
     search: "bybrand",
-    filter: "3",
+    filter: "4",
   };
 
   return (

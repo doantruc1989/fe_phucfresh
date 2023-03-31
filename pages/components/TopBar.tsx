@@ -63,7 +63,7 @@ export default function TopBar({ visible, setVisible }: any) {
             `https://quocson2.fatcatweb.top/product?page=${page}&take=10&sortField=${e.target.value}&search=searchall`
           )
           .then((res) => {
-            setResult(res.data);
+            setResult(res.data[0]);
           });
       } catch (error) {
         console.log(error);

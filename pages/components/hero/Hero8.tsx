@@ -5,22 +5,22 @@ import HeroProps from "../HeroProps";
 
 function Hero8() {
   const dalat = {
-    sortField: "Đà Lạt",
+    condition2: "Đà Lạt",
     search: "bybrand",
     filter: "1",
   };
   const binhan = {
-    sortField: "Bình An Farm",
+    condition2: "Bình An Farm",
     search: "bybrand",
     filter: "1",
   };
   const egarden = {
-    sortField: "E-garden",
+    condition2: "E-garden",
     search: "bybrand",
     filter: "1",
   };
   const vietgap = {
-    sortField: "Vietgap",
+    condition2: "Vietgap",
     search: "bybrand",
     filter: "1",
   };

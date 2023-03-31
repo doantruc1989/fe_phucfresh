@@ -5,27 +5,27 @@ import HeroProps from "../HeroProps";
 
 function Hero6() {
   const nho = {
-    sortField: "nho",
+    condition2: "nho",
     search: "byname",
     filter: "2",
   };
   const tao = {
-    sortField: "táo",
+    condition2: "táo",
     search: "byname",
     filter: "2",
   };
   const cherry = {
-    sortField: "cherry",
+    condition2: "cherry",
     search: "byname",
     filter: "2",
   };
   const cam = {
-    sortField: "cam",
+    condition2: "cam",
     search: "byname",
     filter: "2",
   };
   const le = {
-    sortField: "le",
+    condition2: "le",
     search: "byname",
     filter: "2",
   };
